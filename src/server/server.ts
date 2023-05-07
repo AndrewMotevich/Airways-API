@@ -1,21 +1,12 @@
-import {} from './type';
+import {} from '../models/type';
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import router from './router';
+import router from '../components/router';
+import { Cors } from '../config/config';
 
 const PORT = process.env.PORT || 8081;
-const corsOptions = {
-    origin: [
-        'http://localhost:8080',
-        'http://127.0.0.1:8080',
-        'http://127.0.0.1:5500',
-        'https://podcast-deploy.vercel.app',
-    ],
-    methods: 'GET,PATCH,POST,DELETE,OPTIONS',
-    allowedHeaders: ['X-admin-pass', 'X-hash-pass', 'Library', 'Content-Type', 'Authorization'],
-    credentials: true,
-};
+const corsOptions = Cors;
 
 const app = express();
 

@@ -1,2 +1,2 @@
-import { start } from './components/server';
+import { start } from './server/server';
 start();

@@ -20,7 +20,6 @@ router.post(
     ],
     controller.login
 );
-router.post('/logout', controller.logout);
 router.post('/saveHistory', controller.addHistoryItem);
 router.get('/history', controller.getHistory);
 
