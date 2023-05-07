@@ -1,4 +1,2 @@
-import { authorization } from './components/authorization';
-import library from './components/library';
-library();
-authorization();
+import { start } from './components/server';
+start();

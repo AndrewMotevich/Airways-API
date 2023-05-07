@@ -1,14 +1,23 @@
-type user = {
-    userName: string;
-    userPassword: string;
+export type LoginFormDataType = {
     email: string;
-    phone: string;
+    password: string;
 };
 
-type address = {
-    port: number;
-    family: string;
-    address: string;
+export type RegisterFormDataType = {
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    bthDate: Date;
+    gender: string;
+    country: string;
+    phoneNumber: string;
+    citizenship: string;
+    acceptTerms: boolean;
 };
 
-export { user, address };
+export type UserHistoryDataType = {
+    roundedTrip: string;
+    from: string;
+    destination: string;
+}
