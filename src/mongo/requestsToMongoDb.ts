@@ -20,6 +20,13 @@ class mongoRequests {
             .findOne({ email: `${email}` });
     }
 
+    async findRefreshTokenByEmail(email: string) {
+        return await client
+            .db('Airways')
+            .collection('refreshTokens')
+            .findOne({ email: `${email}` });
+    }
+
     async addUserToDataBase(user: RegisterFormDataType) {
         return await client.db('Airways').collection('airwaysUsers').insertOne(user);
     }
@@ -28,10 +35,21 @@ class mongoRequests {
         return await client.db('Airways').collection('airwaysHistory').insertOne(historyTemplate);
     }
 
+    async addRefreshTokenTemplateToDataBase(email: string) {
+        return await client.db('Airways').collection('refreshTokens').insertOne({email: `${email}`, refreshToken: ''});
+    }
+
     async addHistoryItemToDataBase(email: string, historyItem: UserHistoryDataType) {
         return await client.db('Airways').collection('airwaysHistory').updateMany({ email: `${email}` }, {
           $addToSet: { ['history']: historyItem },
       } as AddToSetOperators<Document>);
+    }
+
+    async addRefreshTokenToDataBase(email: string, refreshToken: string) {
+        return await client.db('Airways').collection('refreshTokens').updateMany(
+            { email: `${email}` },
+            { $set: { ['refreshToken']: `${refreshToken}` } }
+        );
     }
 }
 

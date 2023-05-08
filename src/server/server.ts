@@ -2,7 +2,7 @@ import {} from '../models/type';
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import router from '../components/router';
+import {authRouter, historyRouter} from '../components/router';
 import { Cors } from '../config/config';
 
 const PORT = process.env.PORT || 8081;
@@ -13,7 +13,8 @@ const app = express();
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(cookieParser());
-app.use('/airways', router);
+app.use('/auth', authRouter);
+app.use('/history', historyRouter);
 
 const start = () => {
     try {

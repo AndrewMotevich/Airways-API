@@ -3,6 +3,12 @@ export type LoginFormDataType = {
     password: string;
 };
 
+export type TokenPayloadType = {
+    email: string;
+    firstName: string;
+    lastName: string;
+}
+
 export type RegisterFormDataType = {
     email: string;
     password: string;
@@ -20,4 +26,9 @@ export type UserHistoryDataType = {
     roundedTrip: string;
     from: string;
     destination: string;
+}
+
+export type RefreshTokenFromDataBaseType ={
+    email: string;
+    refreshToken: string;
 }

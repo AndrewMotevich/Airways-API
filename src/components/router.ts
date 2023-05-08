@@ -2,9 +2,10 @@ import { Router } from 'express';
 import { controller } from './controller';
 import { check } from 'express-validator';
 
-const router = Router();
+const authRouter = Router();
+const historyRouter = Router();
 
-router.post(
+authRouter.post(
     '/registration',
     [
         check('email', "email shouldn't be empty").notEmpty(),
@@ -12,7 +13,7 @@ router.post(
     ],
     controller.registration
 );
-router.post(
+authRouter.post(
     '/login',
     [
         check('email', "email shouldn't be empty").notEmpty(),
@@ -20,7 +21,16 @@ router.post(
     ],
     controller.login
 );
-router.post('/saveHistory', controller.addHistoryItem);
-router.get('/history', controller.getHistory);
+authRouter.get('/refresh', controller.refresh);
+historyRouter.post(
+    '/saveHistory',
+    [
+        check('roundedTrip', "roundedTrip shouldn't be empty").notEmpty(),
+        check('from', "from shouldn't be empty").notEmpty(),
+        check('destination', "destination shouldn't be empty").notEmpty(),
+    ],
+    controller.addHistoryItem
+);
+historyRouter.get('/getHistory', controller.getHistory);
 
-export default router;
+export {authRouter, historyRouter};
