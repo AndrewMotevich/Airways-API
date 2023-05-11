@@ -10,6 +10,13 @@ authRouter.post(
     [
         check('email', "email shouldn't be empty").notEmpty(),
         check('password', 'password should be min 8 symbols').isLength({ min: 8 }),
+        check('firstName', "firstName shouldn't be empty").notEmpty(),
+        check('lastName', "lastName shouldn't be empty").notEmpty(),
+        check('bthDate', "bthDate shouldn't be empty").notEmpty(),
+        check('gender', "email shouldn't be empty").notEmpty(),
+        check('country', "country shouldn't be empty").notEmpty(),
+        check('phoneNumber', "phoneNumber shouldn't be empty").notEmpty(),
+        check('citizenship', "citizenship shouldn't be empty").notEmpty(),
     ],
     controller.registration
 );
@@ -21,6 +28,7 @@ authRouter.post(
     ],
     controller.login
 );
+authRouter.get('/logout', controller.logout);
 authRouter.get('/refresh', controller.refresh);
 historyRouter.post(
     '/saveHistory',

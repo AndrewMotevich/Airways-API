@@ -19,7 +19,6 @@ export type RegisterFormDataType = {
     country: string;
     phoneNumber: string;
     citizenship: string;
-    acceptTerms: boolean;
 };
 
 export type UserHistoryDataType = {

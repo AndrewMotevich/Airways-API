@@ -57,6 +57,17 @@ class authController {
             res.status(400).json({ message: 'Login error' });
         }
     }
+    async logout(req: Request, res: Response) {
+        try {
+            if (req.cookies['refresh'] !== undefined){
+                res.clearCookie('refresh', {httpOnly: true, sameSite:'none', secure: true});
+                return res.json({ message: 'You are logout' });
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(400).json({ message: 'Logout error' });
+        }
+    }
     // refresh refresh token
     async refresh(req: Request, res: Response) {
         try {
