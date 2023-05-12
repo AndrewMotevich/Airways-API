@@ -58,9 +58,25 @@ class authController {
         }
     }
     async logout(req: Request, res: Response) {
-        try {
-                await res.cookie('refresh', 'logout', {httpOnly: true, sameSite:'none', secure: true,  maxAge: Date.now() + 2000});
-                return res.json({ message: 'You are logout' });
+        try {   
+                const oldRefreshToken: string = req.cookies['refresh'];
+                jwt.verify(oldRefreshToken, Secret.refreshSecret, async (error, decoded) => {
+                    if (error) {
+                        return res.status(400).json({ message: 'Unauthorized' });
+                    }
+                    else if (decoded) {
+                        const payload = decoded as TokenPayloadType;
+                        // check refresh token from data base
+                        await mongodbRequests.findRefreshTokenByEmail(payload.email)
+                        .then(async refreshTokenFromDataBase => {
+                            if (oldRefreshToken === (refreshTokenFromDataBase as unknown as RefreshTokenFromDataBaseType).refreshToken){
+                                await mongodbRequests.addRefreshTokenToDataBase(payload.email, 'empty');
+                                res.cookie('refresh', "logout", {httpOnly: true, sameSite:'none', secure: true, maxAge: Date.now() + 2000 });
+                                return res.json({ message: 'You are logout' });
+                            }
+                        });
+                    }
+                });
         } catch (error) {
             console.log(error);
             res.status(400).json({ message: 'Logout error' });
