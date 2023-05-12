@@ -59,7 +59,7 @@ class authController {
     }
     async logout(req: Request, res: Response) {
         try {
-                res.cookie('refresh', 'empty', {httpOnly: true, sameSite:'none', secure: true,  maxAge: Date.now() + 2000});
+                await res.cookie('refresh', 'logout', {httpOnly: true, sameSite:'none', secure: true,  maxAge: Date.now() + 2000});
                 return res.json({ message: 'You are logout' });
         } catch (error) {
             console.log(error);
