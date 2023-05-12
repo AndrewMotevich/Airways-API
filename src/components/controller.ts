@@ -50,7 +50,7 @@ class authController {
             const refreshToken = generateRefreshToken(email, user.firstName, user.lastName);
             const accessToken = generateAccessToken(email, user.firstName, user.lastName);
             await mongodbRequests.addRefreshTokenToDataBase(email, refreshToken);
-            res.cookie('refresh', refreshToken, {sameSite:'none', secure: true, maxAge: Date.now() + 86000 });
+            res.cookie('refresh', refreshToken, {sameSite:'none', secure: true, maxAge: Date.now() + 2000 });
             return res.json({ accessToken });
         } catch (error) {
             console.log(error);
@@ -60,7 +60,7 @@ class authController {
     async logout(req: Request, res: Response) {
         try {
             if (req.cookies['refresh'] !== undefined){
-                res.clearCookie('refresh', {httpOnly: true, sameSite:'none', secure: true});
+                res.clearCookie('refresh', {domain:'airways-api.vercel.app', sameSite:'none', secure: true,  maxAge: Date.now() + 2000});
                 return res.json({ message: 'You are logout' });
             }
         } catch (error) {
@@ -88,7 +88,7 @@ class authController {
                             const refreshToken = generateRefreshToken(payload.email, payload.firstName, payload.lastName);
                             const accessToken = generateAccessToken(payload.email, payload.firstName, payload.lastName);
                             await mongodbRequests.addRefreshTokenToDataBase(payload.email, refreshToken);
-                            res.cookie('refresh', refreshToken, {sameSite:'none', secure: true, maxAge: Date.now() + 86000 });
+                            res.cookie('refresh', refreshToken, {sameSite:'none', secure: true, maxAge: Date.now() + 2000 });
                             return res.json({ accessToken });
                         }
                         else {
