@@ -6,6 +6,7 @@ import { authRouter, historyRouter } from '../components/router';
 import { Cors } from '../config/config';
 import swaggerUi from 'swagger-ui-express';
 import swagger from '../swagger/openapi';
+import path from 'path';
 
 const PORT = process.env.PORT || 8081;
 const corsOptions = Cors;
@@ -20,7 +21,8 @@ app.use('/history', historyRouter);
 app.use('/greetings', (req, res) => {
     return res.json({ message: 'Everything work fine' });
 });
-app.use('/', express.static("build"));
+console.log(path.resolve(__dirname + 'build'));
+app.use('/', express.static(path.resolve(__dirname)));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swagger));
 
 const start = () => {
