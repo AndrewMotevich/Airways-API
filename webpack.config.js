@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const EslintPlugin = require('eslint-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     devtool: 'eval-source-map',
@@ -27,7 +28,18 @@ module.exports = {
         filename: 'server.js',
         path: path.resolve(__dirname, 'build'),
     },
-    plugins: [new EslintPlugin({ extensions: 'ts' })],
+    node: {
+        __dirname: false
+    },
+    plugins: [new EslintPlugin({ extensions: 'ts' }), new CopyWebpackPlugin({
+        patterns: [
+            './node_modules/swagger-ui-dist/swagger-ui.css',
+            './node_modules/swagger-ui-dist/swagger-ui-bundle.js',
+            './node_modules/swagger-ui-dist/swagger-ui-standalone-preset.js',
+            './node_modules/swagger-ui-dist/favicon-16x16.png',
+            './node_modules/swagger-ui-dist/favicon-32x32.png'
+        ]
+    })],
     externals: {
         express: "require('express')",
         cookieParser: "require('cookie-parser')",

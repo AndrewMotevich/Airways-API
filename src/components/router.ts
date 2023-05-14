@@ -39,6 +39,4 @@ historyRouter.post(
     ],
     controller.addHistoryItem
 );
-historyRouter.get('/getHistory', controller.getHistory);
-
 export {authRouter, historyRouter};
