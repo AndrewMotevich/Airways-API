@@ -20,7 +20,7 @@ app.use('/history', historyRouter);
 app.use('/greetings', (req, res) => {
     return res.json({ message: 'Everything work fine' });
 });
-app.use('/api-docs', express.static("build"));
+app.use('/', express.static("build"));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swagger));
 
 const start = () => {
