@@ -8,8 +8,23 @@
     ],
     "routes": [
         {
+            "src": "/swagger-ui.css",
+            "dest": "swagger-ui.css"
+        },
+        {
             "src": "/(.*)",
             "dest": "server.js"
+        }
+    ],
+    "headers": [
+        {
+            "source": "/swagger-ui.css",
+            "headers": [
+                {
+                    "key": "x-my-header",
+                    "value": "my header"
+                }
+            ]
         }
     ]
 }
