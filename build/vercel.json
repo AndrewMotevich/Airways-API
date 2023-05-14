@@ -9,22 +9,14 @@
     "routes": [
         {
             "src": "/swagger-ui.css",
-            "dest": "swagger-ui.css"
+            "dest": "/swagger-ui.css",
+            "headers": {
+                "x-my-header": "x-my-header"
+            }
         },
         {
             "src": "/(.*)",
             "dest": "server.js"
-        }
-    ],
-    "headers": [
-        {
-            "source": "/swagger-ui.css",
-            "headers": [
-                {
-                    "key": "x-my-header",
-                    "value": "my header"
-                }
-            ]
         }
     ]
 }
