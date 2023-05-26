@@ -7,23 +7,23 @@
     ],
     "routes": [
         {
-            "src": "/swagger-ui.css",
+            "src": "/api-docs/swagger-ui.css",
             "dest": "swagger-ui.css"
         },
         {
-            "src": "/swagger-ui-bundle.js",
+            "src": "/api-docs/swagger-ui-bundle.js",
             "dest": "swagger-ui-bundle.js"
         },
         {
-            "src": "/swagger-ui-standalone-preset.js",
+            "src": "/api-docs/swagger-ui-standalone-preset.js",
             "dest": "/swagger-ui-standalone-preset.js"
         },
         {
-            "src": "/favicon-16x16.png",
+            "src": "/api-docs/favicon-16x16.png",
             "dest": "/favicon-16x16.png"
         },
         {
-            "src": "/favicon-32x32.png",
+            "src": "/api-docs/favicon-32x32.png",
             "dest": "/favicon-32x32.png"
         },
         {
