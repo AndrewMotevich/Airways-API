@@ -30,8 +30,12 @@ authRouter.post(
 );
 authRouter.get('/logout', controller.logout);
 authRouter.get('/refresh', controller.refresh);
+historyRouter.get(
+    '/trips',
+    controller.getHistory
+);
 historyRouter.post(
-    '/saveHistory',
+    '/trips',
     [
         check('roundedTrip', "roundedTrip shouldn't be empty").notEmpty(),
         check('from', "from shouldn't be empty").notEmpty(),

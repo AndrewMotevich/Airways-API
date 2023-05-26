@@ -21,11 +21,17 @@ app.use('/greetings', (req, res) => {
     return res.json({ message: 'Everything work fine' });
 });
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swagger));
+app.use('/', express.static('build'));
+
+// redirect to swagger
+app.get('/', (req, res) => {
+    res.redirect('/api-docs');
+});
 
 const start = () => {
     try {
         app.listen(PORT, function () {
-            console.log('Example app listening at http://localhost', PORT);
+            console.log(`Example app listening at http://localhost:${PORT}`);
         });
     } catch (error) {
         console.log(error);
