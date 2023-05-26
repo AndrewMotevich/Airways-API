@@ -7,6 +7,10 @@
     ],
     "routes": [
         {
+            "src": "/swagger",
+            "dest": "swagger-ui.css"
+        },
+        {
             "src": "/(.*)",
             "dest": "server.js"
         }
