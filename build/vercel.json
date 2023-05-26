@@ -3,7 +3,8 @@
     "builds": [
         { "src": "*.css", "use": "@vercel/static" },
         { "src": "*.png", "use": "@vercel/static" },
-        { "src": "*.js", "use": "@vercel/node" }
+        { "src": "server.js", "use": "@vercel/node" },
+        { "src": "*.js", "use": "@vercel/static" }
     ],
     "routes": [
         {
@@ -12,11 +13,11 @@
         },
         {
             "src": "/api-docs/swagger-ui-bundle.js",
-            "destination": "swagger-ui-bundle.js"
+            "dest": "swagger-ui-bundle.js"
         },
         {
             "src": "/api-docs/swagger-ui-standalone-preset.js",
-            "destination": "swagger-ui-standalone-preset.js"
+            "dest": "swagger-ui-standalone-preset.js"
         },
         {
             "src": "/api-docs/favicon-16x16.png",
