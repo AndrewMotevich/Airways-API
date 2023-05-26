@@ -22,9 +22,10 @@ export type RegisterFormDataType = {
 };
 
 export type UserHistoryDataType = {
-    roundedTrip: string;
-    from: string;
-    destination: string;
+    completed: boolean;
+    mainData: object;
+    ticketsData: object ;
+    passengersData: object ;
 }
 
 export type RefreshTokenFromDataBaseType ={
