@@ -12,11 +12,11 @@
         },
         {
             "src": "/api-docs/swagger-ui-bundle.js",
-            "dest": "/"
+            "destination": "swagger-ui-bundle.js"
         },
         {
             "src": "/api-docs/swagger-ui-standalone-preset.js",
-            "dest": "/"
+            "destination": "swagger-ui-standalone-preset.js"
         },
         {
             "src": "/api-docs/favicon-16x16.png",
