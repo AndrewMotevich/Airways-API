@@ -38,9 +38,9 @@ historyRouter.post(
     '/trips',
     [   
         check('completed', "completed shouldn't be empty").notEmpty(),
-        check('mainData', "roundedTrip shouldn't be empty").notEmpty(),
-        check('ticketsData', "from shouldn't be empty").notEmpty(),
-        check('passengersData', "destination shouldn't be empty").notEmpty(),
+        check('mainData', "mainData shouldn't be empty").notEmpty(),
+        check('ticketsData', "ticketsData shouldn't be empty").notEmpty(),
+        check('passengersData', "passengersData shouldn't be empty").notEmpty(),
     ],
     controller.addHistoryItem
 );
