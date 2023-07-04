@@ -1,6 +1,9 @@
 # Airways-API
-## This is a REST api for task [Airways](https://github.com/rolling-scopes-school/tasks/blob/0e38ef561d25d54462f452a43c8bccb3a6ebc45b/tasks/airways.md)
+## This is a REST api for task [Airways](https://github.com/AndrewMotevich/Airways-API)
 ## This api implement these options:
+- ### Authentication (login / password)
+- ### Authorization  (JWT Tokens: access/refresh)
+- ### Service for tickets history
 
 ## API features:
 - ### **Node.js**
@@ -9,7 +12,6 @@
 - ### **TypeScript**
 - ### **Webpack**
 
-# About [Airways](https://github.com/rolling-scopes-school/tasks/blob/0e38ef561d25d54462f452a43c8bccb3a6ebc45b/tasks/airways.md)
 ### Aplication options:
 - Authorization:
   * registration
